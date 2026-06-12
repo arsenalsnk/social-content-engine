@@ -1,0 +1,51 @@
+{
+  "name": "social-content-engine",
+  "version": "1.0.0",
+  "description": "Automated content publishing platform for social media using RSS feeds, Gemini AI, Firestore, and Facebook Graph API.",
+  "main": "dist/presentation/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/presentation/app.js",
+    "dev": "nodemon --watch src --ext ts --exec tsx src/presentation/app.ts",
+    "pipeline": "pnpm run build && node dist/scripts/run-pipeline-once.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:firestore": "pnpm run build && node --import dotenv/config --input-type=module -e \"import { FirestoreClient } from './dist/infrastructure/database/firestore/firestore.client.js'; const c = new FirestoreClient({ projectId: process.env.FIREBASE_PROJECT_ID, credentialsPath: process.env.GOOGLE_APPLICATION_CREDENTIALS }); const s = await c.getDb().collection('articles').limit(1).get(); console.log('Firestore OK:', process.env.FIREBASE_PROJECT_ID, s.size, 'doc(s)');\"",
+    "test:facebook": "pnpm run build && node dist/scripts/test-facebook.js",
+    "test:facebook:post": "pnpm run build && node dist/scripts/test-facebook.js --post",
+    "test:instagram": "pnpm run build && node dist/scripts/test-instagram.js",
+    "test:stock-image": "pnpm run build && node dist/scripts/test-stock-image.js",
+    "test:llm": "pnpm run build && node dist/scripts/test-llm.js",
+    "test:llm:deepseek": "pnpm run build && node dist/scripts/test-llm.js --provider=deepseek"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arsenalsnk/social-content-engine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/arsenalsnk/social-content-engine/issues"
+  },
+  "homepage": "https://github.com/arsenalsnk/social-content-engine#readme",
+  "dependencies": {
+    "@google/genai": "^2.8.0",
+    "axios": "^1.17.0",
+    "dotenv": "^17.4.2",
+    "firebase-admin": "^14.0.0",
+    "node-cron": "^4.2.1",
+    "openai": "^6.42.0",
+    "puppeteer": "^25.1.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "eslint": "^10.4.1",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

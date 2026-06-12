@@ -1,0 +1,7 @@
+export enum ArticleStatus {
+  PENDING = 'PENDING',
+  SUMMARIZED = 'SUMMARIZED',
+  IMAGE_GENERATED = 'IMAGE_GENERATED',
+  POSTED = 'POSTED',
+  FAILED = 'FAILED',
+}

@@ -1,0 +1,26 @@
+export const DEFAULT_INSTAGRAM_TARGET_USERNAME = 'fabriziorom';
+export const DEFAULT_INSTAGRAM_FETCH_LIMIT = 12;
+export const DEFAULT_INSTAGRAM_KEYWORDS = [
+  'arsenal',
+  'gunners',
+  'afc',
+  'arteta',
+  'here we go',
+  'ødegaard',
+  'odegaard',
+  'saka',
+  'rice',
+  'raya',
+  'gyokeres',
+  'gyökeres',
+  'havertz',
+  'saliba',
+  'timber',
+  'merino',
+  'trossard',
+  'martinelli',
+  'white',
+  'rasmus',
+  'lewis-skelly',
+  'emirates',
+];
