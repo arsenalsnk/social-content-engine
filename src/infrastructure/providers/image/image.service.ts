@@ -55,7 +55,7 @@ export class ImageService implements IImageService {
           await page
             .waitForFunction(
               `(() => {
-                const img = document.querySelector('.hero-image');
+                const img = document.querySelector('.photo');
                 return !img || (img.complete && img.naturalWidth > 0);
               })()`,
               { timeout: 15000 },
